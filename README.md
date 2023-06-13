@@ -1,11 +1,11 @@
 # kubernetes-bootstrap-vagrant
 Deploy kubernetes cluster (3 nodes) with vagrant
 
-# Requierements
-Please feed your private key in private.key file : TAG = __MY_PRIVATE_KEY__
-Replace your pubic key : TAG = __MY_PUBLIC_KEY__
+### Requierements
+Please feed your private key in private.key file : TAG = __MY_PRIVATE_KEY__<br />
+Replace your pubic key : TAG = __MY_PUBLIC_KEY__<br />
 
-# Run vagrant
+### Run vagrant
 ```
 hugo@sandbox:~/Git/kubernetes-bootstrap-vagrant$ tree 
 .
@@ -29,7 +29,7 @@ user	0m14,373s
 sys	0m6,879s
 ```
 
-# Check Vagrant status
+### Check Vagrant status
 ```
 $ vagrant global-status |grep running
 502e2b7  node-1 virtualbox running /home/hugo/Work/Vagrant/build_k8s   
@@ -37,7 +37,7 @@ $ vagrant global-status |grep running
 88a5a18  node-3 virtualbox running /home/hugo/Work/Vagrant/build_k8s
 ```
 
-# Set your local environnement to manager local K8S cluster
+### Set your local environnement to manager local K8S cluster
 ```
 scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@192.168.10.11:/etc/kubernetes/admin.conf $HOME/.kube/sandbox
 sed -i "s@server: https://.*@server: https://192.168.10.11:6443@" $HOME/.kube/sandbox
