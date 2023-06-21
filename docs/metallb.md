@@ -27,7 +27,7 @@ spec:
   ipAddressPools:
   - first-pool
 EOF
-kubectl apply -f ./metallb.yaml
+kubectl apply -f /tmp/metallb.yaml
 ```
 
 ### test
