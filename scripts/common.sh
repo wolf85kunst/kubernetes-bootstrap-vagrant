@@ -72,7 +72,7 @@ EOF
 sudo modprobe overlay
 sudo modprobe br_netfilter
 
- (cri-dockerd)
+# (cri-dockerd)
 # ------------------------------------
 lsmod | grep br_netfilter
 
