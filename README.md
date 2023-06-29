@@ -57,3 +57,9 @@ kubectl get all --all-namespaces
 
 ### Nginx Ingress Controller (helm)
 [ingress-nginx](docs/ingress-nginx.md)
+
+### Prometheus installation (helm)
+[ingress-nginx](docs/prometheus.md)
+
+### Grafana Installation (helm)
+[ingress-nginx](docs/grafana.md)
