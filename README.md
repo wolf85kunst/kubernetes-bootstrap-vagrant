@@ -2,7 +2,6 @@
 Deploy kubernetes cluster (3 nodes) with vagrant
 
 ### Requierements
-Please feed your private key in private.key file : TAG = __MY_PRIVATE_KEY__<br />
 Replace your pubic key : TAG = __MY_PUBLIC_KEY__<br />
 
 ### Run vagrant
