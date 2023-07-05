@@ -3,8 +3,9 @@
 ````
 # Generate key & csr
 cd /tmp
+group=developer
 openssl genrsa -out hugo.key 2048
-openssl req -new -key hugo.key -out hugo.csr
+openssl req -new -key hugo.key -out hugo.csr -subj "/CN=hugo/O=${group}"
 
 # recuperer csr
 # cat hugo.csr | base64 | tr -d "\n"
@@ -29,7 +30,6 @@ kubectl get csr
 kubectl certificate approve hugo
 kubectl get csr
 
-
 # Enregistrer le certificat
 kubectl get csr/hugo -o yaml
 kubectl get csr hugo -o jsonpath='{.status.certificate}'| base64 -d > hugo.crt
@@ -48,6 +48,12 @@ kubectl create rolebinding developer-binding-hugo --role=developer --user=hugo
 kubectl config set-credentials hugo --client-key=hugo.key --client-certificate=hugo.crt --embed-certs=true
 kubectl config set-context hugo --cluster=kind-kind --user=hugo
 kubectl config use-context hugo
+
+# test
+kubectl get pod
+kubectl get service
+  Error from server (Forbidden): services is forbidden: 
+  User "hugo" cannot list resource "services" in API group "" in the namespace "default"
 
 # clean up
 kubectl config delete-context hugo
