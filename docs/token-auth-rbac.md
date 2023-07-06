@@ -59,4 +59,5 @@ kubectl get pods
 ### clean up
 ```
 kubectl delete ns ${user}-ns
+rm ~/.kube/${user}
 ```
