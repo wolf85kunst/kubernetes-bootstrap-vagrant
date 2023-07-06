@@ -1,4 +1,4 @@
-# CREATE USER WIRH TOKEN AUTH
+# CREATE USER WITH TOKEN AUTH
 
 ### Help !
 > https://www.ibm.com/docs/fr/cloud-paks/cp-management/2.3.x?topic=kubectl-using-service-account-tokens-connect-api-server
