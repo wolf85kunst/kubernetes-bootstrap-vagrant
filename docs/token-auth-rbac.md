@@ -39,7 +39,7 @@ echo ${token}
 
 # create role and bindingRole
 kubectl create role ${user}-role --verb=get --verb=list --verb=watch --resource=pods
-kubectl create rolebinding ${user}-binding --serviceaccount=${user}-ns:${user}-sa --role=${user}
+kubectl create rolebinding ${user}-binding --serviceaccount=${user}-ns:${user}-sa --role=${user}-role
 
 # Create new kubeconfig for testing
 touch ~/.kube/${user}
