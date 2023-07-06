@@ -3,9 +3,9 @@
 ### Help !
 > https://www.ibm.com/docs/fr/cloud-paks/cp-management/2.3.x?topic=kubectl-using-service-account-tokens-connect-api-server
 
-
 ### /!\ Get certificat in a pod
 ```
+# Get certificate from a pod
 kubectl exec -it ellie -- cat /var/run/secrets/kubernetes.io/serviceaccount/..data/ca.crt > /tmp/ca.crt
 ```
 
@@ -21,6 +21,7 @@ kubens ${user}-ns
 # create serviceAccount
 kubectl create serviceaccount ${user}-sa
 
+# Create secret
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Secret
@@ -31,16 +32,16 @@ metadata:
 type: kubernetes.io/service-account-token
 EOF
 
-
-
+# Get generated token
 kubectl describe secrets ${user}-secret
 token=$(kubectl get secrets ${user}-secret -o jsonpath={.data.token} |base64 -d)
 echo ${token}
 
+# create role and bindingRole
 kubectl create role ${user}-role --verb=get --verb=list --verb=watch --resource=pods
 kubectl create rolebinding ${user}-binding --serviceaccount=${user}-ns:${user}-sa --role=${user}
 
-
+# Create new kubeconfig for testing
 touch ~/.kube/${user}
 chmod 600 ~/.kube/${user}
 KUBECONFIG=$HOME/.kube/${user}
